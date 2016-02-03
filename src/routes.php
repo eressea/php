@@ -5,7 +5,7 @@ $app->put('/upload', function ($request, $response, $args) {
     $this->logger->info("Eressea '/upload' route");
     $text = $request->getBody();
     do {
-        $rng = rand();
+        $rng = uniqid();
         $filename = 'upload/' . $rng . '.txt';
     } while (file_exists($filename));
     $f = fopen($filename, "w");
