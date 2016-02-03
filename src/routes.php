@@ -11,7 +11,7 @@ $app->put('/upload', function ($request, $response, $args) {
     $f = fopen($filename, "w");
     if ($f) {
         fwrite($f, $text);
-        echo $rng;
+        echo $rng . "\n";
         fclose($f);
     } else {
         return $response->withStatus(500);
