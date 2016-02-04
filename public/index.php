@@ -28,9 +28,24 @@ $app->view->parserExtensions = array(new \Slim\Views\TwigExtension());
 // Define routes
 $app->get('/', function () use ($app) {
     // Sample log message
-    $app->log->info("Slim-Skeleton '/' route");
+    $app->log->info("Eressea '/' route");
     // Render index view
     $app->render('index.html');
+});
+
+function store_orders($text) {
+    return uniqid();
+}
+
+$app->put('/upload', function() use ($app) {
+    $app->log->info("Eressea '/' upload");
+    $body = $app->request->getBody();
+    $uid = store_orders($body);
+    if ($uid) {
+        $app->response->setBody($uid . "\n");
+    } else {
+        $app->response->setStatus(500);
+    }
 });
 
 // Run app
