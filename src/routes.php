@@ -9,6 +9,7 @@ $app->get('/', function () use ($app) {
 });
 
 function store_orders($text) {
+    umask(07);
     do {
         $rng = uniqid();
         $filename = __DIR__ . '/../upload/' . $rng . '.txt';
