@@ -11,7 +11,7 @@ $app->get('/', function () use ($app) {
 function store_orders($text) {
     do {
         $rng = uniqid();
-        $filename = 'upload/' . $rng . '.txt';
+        $filename = __DIR__ . '/../upload/' . $rng . '.txt';
     } while (file_exists($filename));
     $f = fopen($filename, "w");
     if ($f) {
